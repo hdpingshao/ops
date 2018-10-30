@@ -26,4 +26,4 @@
 > * /usr/local/nginx/sbin/nginx -s reload //重载配置
 
 ### 服务管理脚本
-> * 
+> * https://github.com/hdpingshao/ops/blob/master/nginx/etc_init_nginx.txt
