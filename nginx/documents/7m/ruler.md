@@ -1,4 +1,4 @@
-####nginx的location配置
+#### nginx的location配置
 
     nginx location语法规则：location [=|~|~*|^~] /uri/ { … }
     nginx的location匹配的变量是$uri
@@ -11,11 +11,11 @@
 | ~*|  表示不区分大小写的正则匹配|
 |/|  通用匹配，任何请求都会匹配到|
 
-#####规则优先级
+##### 规则优先级
 
     =  高于  ^~  高于  ~* 等于 ~  高于  /
     
-#####规则示例
+##### 规则示例
 
     location = "/12.jpg" { ... }
     如：
@@ -43,7 +43,7 @@
     www.techniques.cn/admin/aaa/1.php 匹配
     www.techniques.cn/123/admin/1.php 不匹配
     
-#####小常识
+##### 小常识
 
     有些资料上介绍location支持不匹配 !~，
     如： location !~ 'png'{ ... }

@@ -1,10 +1,10 @@
-####nginx基于$request_uri访问控制
+#### nginx基于$request_uri访问控制
 ```
 $request_uri比$docuemnt_uri多了请求的参数。
 主要是针对请求的uri中的参数进行控制。
 ```
 
-#####示例
+##### 示例
 ```
 if ($request_uri ~ "gid=\d{9,12}")
 {

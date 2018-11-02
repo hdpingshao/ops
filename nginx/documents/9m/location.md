@@ -1,10 +1,10 @@
-####基于location的访问控制
+#### 基于location的访问控制
 ```
 在生产环境中，我们会对某些特殊的请求进行限制，比如对网站的后台进行限制访问。
 这就用到了location配置。
 ```
 
-#####示例1
+##### 示例1
 ```
 location /pingshao/
 {
@@ -14,7 +14,7 @@ location /pingshao/
 说明：针对/pingshao/目录，全部禁止访问，这里的deny all可以改为return 403.
 ```
 
-#####示例2
+##### 示例2
 ```
 location ~ ".bak|\.ht"
 {
@@ -27,7 +27,7 @@ location ~ ".bak|\.ht"
 2. www.techniques.cn/pingshao/123/.htalskdjf
 ```
 
-#####示例3
+##### 示例3
 ```
 location ~ (data|cache|tmp|image|attachment).*\.php$
 {

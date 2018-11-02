@@ -1,9 +1,9 @@
-####Nginx基于$document_uri的访问控制
+#### Nginx基于$document_uri的访问控制
 ```
 这就用到了变量$document_uri，根据前面所学内容，该变量等价于$uri，其实也等价于location匹配。
 ```
 
-#####示例1
+##### 示例1
 ```
 if ($document_uri ~ "/admin/")
 {
@@ -20,7 +20,7 @@ if结构中不支持使用allow和deny。
 3. www.techniques.cn/admin.php  不匹配
 ```
 
-#####示例2
+##### 示例2
 ```
 if ($document_uri = /admin.php)
 {
@@ -34,7 +34,7 @@ if ($document_uri = /admin.php)
 2. www.techniques.cn/123/admin.php  不匹配
 ```
 
-#####示例3
+##### 示例3
 ```
 if ($document_uri ~ '/data/|/cache/.*\.php$')
 {
