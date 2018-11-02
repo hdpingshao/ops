@@ -128,7 +128,7 @@ path设置缓存数据存放的路径；
 
 levels设置目录层级，如levels=1:2，表示有两级子目录,第一个目录名取md5值的倒数第一个值，第二个目录名取md5值的第2和3个值。如下图：
 ```
-![image](https://github.com/hdpingshao/ops/nginx/documents/8m/nginx_cache_levels.png)
+![image](https://github.com/hdpingshao/ops/blob/master/nginx/documents/8m/nginx_cache_levels.png)
 ```
 keys_zone设置内存zone的名字和大小，如keys_zone=my_zone:10m
 
