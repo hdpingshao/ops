@@ -44,4 +44,12 @@
 
 #### etcd数据库集群部署
 
-> * 
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_etcd.md
+
+#### Node安装docker
+
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_docker.md
+
+#### Flannel容器集群网络部署
+
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_flannel.md
