@@ -83,3 +83,6 @@
 > * systemctl daemon-reload
 > * systemctl restart docker
 
+##### 6、分别在两台node节点上启动busybox容器来进行flannel网络的测试，在容器中互相ping对方容器的ip，观察网络是否正常
+
+    docker run -it busybox

@@ -28,6 +28,9 @@
 |master02|192.168.200.116|kube-apiserver<br>kube-controller-manager<br>kube-scheduler<br>etcd|CPU:2C+<br>内存:4G|
 |node01|192.168.200.117|kubelet<br>kube-proxy<br>docker<br>flannel<br>etcd|CPU:2C+<br>内存:4G|
 |node02|192.168.200.118|kubelet<br>kube-proxy<br>docker<br>flannel|CPU:2C+<br>内存:4G|
+|Load Balancer<br>(Master)|192.168.200.172<br>192.168.200.142(VIP)|Nginx L4|CPU:2C+<br>内存:4G|
+|Load Balancer<br>(Backup)|192.168.200.173|Nginx L4|CPU:2C+<br>内存:4G|
+|Registry|192.168.200.120|Harbor|CPU:2C+<br>内存:4G|
 
 
 #### k8s单Master集群架构图
@@ -53,3 +56,15 @@
 #### Flannel容器集群网络部署
 
 > * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_flannel.md
+
+#### 自签APIServer SSL证书
+
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/ssl_apiserver.md
+
+#### 单Master集群-部署Master01组件
+
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_master01.md
+
+#### 单Master集群-部署Node组件
+
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_node.md
