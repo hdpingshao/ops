@@ -68,3 +68,15 @@
 #### 单Master集群-部署Node组件
 
 > * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_node.md
+
+#### 多Master集群-部署Master02组件
+
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_master02.md
+
+#### 多Master集群-Nginx+Keepalived（高可用）
+
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_lb.md
+
+#### 部署一个测试案例检验集群工作状态（涉及到开启匿名用户并将匿名用户绑定角色的操作---授权）
+
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_test.md
