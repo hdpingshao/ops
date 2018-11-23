@@ -10,3 +10,4 @@
 
 #### 三、kubectl管理工具
 
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/docs/三、kubectl管理工具.md

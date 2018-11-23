@@ -80,3 +80,7 @@
 #### 部署一个测试案例检验集群工作状态（涉及到开启匿名用户并将匿名用户绑定角色的操作---授权）
 
 > * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_test.md
+
+#### 部署Web UI（Dashboard）
+
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_ui.md
