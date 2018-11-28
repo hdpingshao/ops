@@ -28,5 +28,7 @@
 
 > * https://github.com/hdpingshao/ops/blob/master/kubernetes/docs/七、Ingress（暴露你的应用让外部访问的最佳方式）.md
 
+#### 八、Volume（数据管理）.md
 
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/docs/八、Volume（数据管理）.md
 
