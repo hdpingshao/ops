@@ -16,6 +16,7 @@
     [root@localhost ~]# 
 
 - 记得关闭selinux以及iptables
+- 在每个node节点上都需要安装nfs-utils（yum install -y nfs-utils）
 
 #### 2、 启动Deployment控制器测试NFS网络数据卷的使用
 

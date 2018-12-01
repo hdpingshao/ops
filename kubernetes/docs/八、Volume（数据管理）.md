@@ -9,3 +9,7 @@
 #### 网络数据卷（GlusterFS）
 
 > * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/gluster_volume.md
+
+#### Persistent Volumes(持久卷)
+
+> * https://github.com/hdpingshao/ops/blob/master/kubernetes/content/deploy_pv.md
