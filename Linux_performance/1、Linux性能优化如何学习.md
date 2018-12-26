@@ -28,7 +28,7 @@
 
 - 其实说到性能工具，就不得不提性能领域的大师布伦丹·格雷格（Brendan Gregg）。他不仅是动态追踪工具DTrace的作者，还开发了许许多多的性能工具。如下为他所描绘的Linux性能工具图谱：
 
-![image](https://github.com/hdpingshao/ops/tree/master/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/images/linux1.png)
+![image](https://github.com/hdpingshao/ops/tree/master/Linux_performance/images/linux1.png)
 
 - 这个图是Linux性能分析最重要的参考资料之一，它告诉你，在Linux不同子系统出现性能问题后，应该用什么样的工具来观测和分析。
 
@@ -38,7 +38,7 @@
 
 - 参考一张学习思维导图：
 
-![image](https://github.com/hdpingshao/ops/tree/master/Linux%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/images/linux2.png)
+![image](https://github.com/hdpingshao/ops/tree/master/Linux_performance/images/linux2.png)
 
 ### 三、高效学习法
 
