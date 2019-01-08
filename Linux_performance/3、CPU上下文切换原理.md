@@ -24,7 +24,7 @@
 
 ###### 进程上下文切换：Linux 按照特权等级，把进程的运行空间分为内核空间和用户空间，分别对应着下图中， CPU 特权等级的 Ring 0 和 Ring 3。
 
-![image](https://github.com/hdpingshao/ops/tree/master/Linux_performance/images/linux3.png)
+![image](https://github.com/hdpingshao/ops/tree/master/Linux_performance/images/linux3.jpg)
 
 ###### 内核空间（Ring 0）具有最高权限，可以直接访问所有资源；
 
