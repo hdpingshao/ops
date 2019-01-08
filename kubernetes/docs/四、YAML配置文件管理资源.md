@@ -1,3 +1,13 @@
+#### YAML语法格式：
+
+- YAML是一种简洁的非标记语言
+- 缩进表示层级关系
+- 不支持制表符“tab”缩进，使用空格缩进
+- 通常开头缩进2个空格
+- 字符后缩进1个空格，如冒号、逗号等
+- “---”表示YAML格式，一个我呢见的开始
+- “#” 注释
+
 #### YAML配置文件说明：
 
 - 定义配置时，指定最新稳定版API（当前为v1）；
@@ -26,9 +36,9 @@
 		spec:
 		  containers:
 		  - name: nginx
-			image: nginx:1.10
-			ports:
-			- containerPort: 80
+            image: nginx:1.10
+            ports:
+            - containerPort: 80
 			
 #### 为上述deployment控制器创建service提供外部访问接口的配置文件
 

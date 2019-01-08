@@ -15,6 +15,9 @@
 
     DNS服务监视Kubernetes API，为每一个Service创建DNS记录用于域名解析。这样Pod中就可以通过DNS域名获取Service的访问地址。
     
+    ClusterIP A记录格式： <service-name>.<namespace-name>.svc.cluster.local
+    示例：my-svc.my-namespace.svc.cluster.local
+    
 ### 进入pod查看环境变量配置（env指令的使用）
 
 	[root@localhost service]# kubectl exec -it nginx-pod bash

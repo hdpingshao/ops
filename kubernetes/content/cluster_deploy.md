@@ -16,6 +16,18 @@
 - 分配一个内部集群IP地址，并在每个节点上启用一个端口来暴露服务。
 - 除此之外，kubernetes会请求底层云平台上的负载均衡器，将每个Node([NodeIP]:[NodePort])作为后端添加进去。
 
+### Service功能
+
+- 防止Pod失联
+- 定义一组Pod的访问策略
+- 支持ClusterIP、NodePort以及LoadBalancer三种类型
+- Service的底层实现主要又iptables和ipvs两种网络模型
+
+### Pod与Service的关系
+
+- 通过label-selector相关联
+- 通过Service实现Pod的负载均衡（TCP/UDP 4层负载均衡）
+
 ### NodePort示例（最常用的服务类型）
 
 	apiVersion: extensions/v1beta1

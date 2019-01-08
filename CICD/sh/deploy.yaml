@@ -1,0 +1,76 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: blog-solo
+  namespace: blog
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      project: blog
+      app: solo
+  template:
+    metadata:
+      labels:
+        project: blog
+        app: solo
+    spec:
+      imagePullSecrets:
+      - name: registry-pull-secret
+      containers:
+      - name: solo
+        image: 192.168.200.120/project/solo:latest
+        imagePullPolicy: Always
+        env:
+        - name: ENV
+          value: "environment" 
+        ports:
+        - containerPort: 8080
+          name: web
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 600m
+            memory: 4Gi
+          requests:
+            cpu: 300m
+            memory: 100Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 60
+          timeoutSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 60
+          timeoutSeconds: 20
+        volumeMounts:
+        - name: jdk
+          mountPath: /usr/local/jdk
+      volumes:
+      - name: jdk
+        hostPath:
+          path: /usr/local/jdk
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog-solo
+  namespace: blog
+  labels:
+    project: blog
+    app: solo
+spec:
+  selector:
+    project: blog
+    app: solo
+  ports:
+  - name: web
+    port: 80
+    targetPort: 8080
+    nodePort: 30006
+  type: NodePort

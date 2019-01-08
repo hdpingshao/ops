@@ -51,7 +51,15 @@
     mkdir -p /data/brick1/gv0
     gluster volume create gv0 replica 2 gluster01:/data/brick1/gv0 gluster02:/data/brick1/gv0
     gluster volume start gv0
+     
     gluster volume info
+    gluster volume status
+    gluster volume list
+    
+##### 10、停止卷以及删除卷
+
+    gluster volume stop gv0
+    gluster volume delete gv0
 
 - 接下来就可以使用gluster集群的存储功能了
 

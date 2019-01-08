@@ -1,0 +1,87 @@
+/**k8s集群启动一个jenkins-slave来工作*/
+podTemplate(label: 'jnlp-slave', cloud: 'kubernetes', containers: [
+    containerTemplate(
+        name: 'jnlp', 
+        image: '192.168.200.120/devops/jenkins-slave', 
+        alwaysPullImage: true 
+    ),
+  ],
+  volumes: [
+    hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
+    hostPathVolume(mountPath: '/usr/bin/docker', hostPath: '/usr/bin/docker'),
+    hostPathVolume(mountPath: '/usr/local/jdk', hostPath: '/usr/local/jdk'),
+    hostPathVolume(mountPath: '/usr/local/maven', hostPath: '/usr/local/maven'),
+  ],
+  imagePullSecrets: ['registry-pull-secret'],
+) 
+{
+  node("jnlp-slave"){
+      stage('Git Checkout'){
+         checkout([$class: 'GitSCM', branches: [[name: '${gitlabSourceBranch}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'e065f738-123312-123123-2139f6b', url: 'git@gitlab.xmoffice.zkclouds.cn:IT-Operation-Platform/solo.git']]])
+      }
+
+      env.GIT_TAG_NAME = gitTagName()
+      env.GIT_TAG_MESSAGE = gitTagMessage()
+
+      stage('Unit Testing'){
+      	echo "Unit Testing..."
+      }
+      stage('Maven Build'){
+          sh "mvn clean package -Dmaven.test.skip=true"
+      }
+      stage('Build and Push Image'){
+          sh '''
+          docker login -u junping.huang -p 123456 192.168.200.120
+          docker build -t 192.168.200.120/project/solo:${GIT_TAG_NAME} -f deploy/Dockerfile .
+          docker push 192.168.200.120/project/solo:${GIT_TAG_NAME}
+          '''
+      }
+      stage('Deploy to K8S'){
+          sh '''
+          cd deploy 
+          sed -i "/192.168.200.120/{s/latest/${GIT_TAG_NAME}/}" deploy.yaml
+          sed -i "s/environment/${GIT_TAG_MESSAGE}/" deploy.yaml
+          ''' 
+          kubernetesDeploy configs: 'deploy/deploy.yaml', kubeConfig: [path: ''], kubeconfigId: 'c7e08fe7-1231-1233-3453454cb7', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
+      }
+      stage('Testing'){
+          echo "Testing..."
+      }
+  }
+
+}
+
+/**获取GIT_TAG_NAME以及GIT_TAG_MESSAGE的值*/ 
+/** @return The tag name, or `null` if the current commit isn't a tag. */
+String gitTagName() {
+    commit = getCommit()
+    if (commit) {
+        desc = sh(script: "git describe --tags ${commit}", returnStdout: true)?.trim()
+        if (isTag(desc)) {
+            return desc
+        }
+    }
+    return null
+}
+ 
+/** @return The tag message, or `null` if the current commit isn't a tag. */
+String gitTagMessage() {
+    name = gitTagName()
+    msg = sh(script: "git tag -n10000 -l ${name}", returnStdout: true)?.trim()
+    if (msg) {
+        return msg.substring(name.size()+1, msg.size()).trim()
+    }
+    return null
+}
+ 
+String getCommit() {
+    return sh(script: 'git rev-parse HEAD', returnStdout: true)?.trim()
+}
+ 
+@NonCPS
+boolean isTag(String desc) {
+    match = desc =~ /.+-[0-9]+-g[0-9A-Fa-f]{6,}$/
+    result = !match
+    match = null // prevent serialisation
+    return result
+}

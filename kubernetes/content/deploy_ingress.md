@@ -1,3 +1,11 @@
+#### Pod与Ingress的关系
+
+- 通过service相关联
+- 通过Ingress Controller实现Pod的负载均衡，支持TCP/UDP 4层和HTTP 7层
+- 支持自定义Service访问策略
+- 只支持基于域名的网站访问
+- 支持TLS
+
 #### Ingress部署步骤
 
 - 部署Default Backend
