@@ -56,7 +56,7 @@
 
 ###### 如下图所示，保存上下文和恢复上下文的过程并不是“免费”的，需要内核在 CPU 上运行才能完成。
 
-![image](https://github.com/hdpingshao/ops/tree/master/Linux_performance/images/linux4.png)
+![image](https://github.com/hdpingshao/ops/tree/master/Linux_performance/images/linux4.jpg)
 
 ###### 根据 Tsuna 的测试报告，每次上下文切换都需要几十纳秒到数微秒的 CPU 时间。这个时间还是相当可观的，但是在进程上下文切换次数较多的情况下，很容易导致 CPU 将大量时间耗费在寄存器、内核栈以及虚拟内存等资源的保存和恢复上，进而大大缩短了真正运行进程的时间。这也正是上一节中我们所讲的，导致平均负载升高的一个重要因素。
 
