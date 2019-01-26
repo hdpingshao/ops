@@ -101,7 +101,7 @@
 ##### 我们先来模拟第一个场景。首先，在第一个终端，运行下面这个 vmstat 命令：
 
 	# 每隔 1 秒输出 1 组数据
-	$ vmstat 1
+	[root@localhost ~]# vmstat 1
 	procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
 	r b swpd free buff cache si so bi bo in cs us sy id wa st
 	0 0 0 7743608 1112 92168 0 0 0 0 52 152 0 1 100 0 0
@@ -117,7 +117,7 @@
 
 ##### 接下来，到第二个终端执行 dd 命令，通过读取随机设备，生成一个 500MB 大小的文件：
 
-	$ dd if=/dev/urandom of=/tmp/file bs=1M count=500
+	[root@localhost ~]# dd if=/dev/urandom of=/tmp/file bs=1M count=500
 
 ##### 然后再回到第一个终端，观察 Buffer 和 Cache 的变化情况：
 
@@ -152,9 +152,9 @@
 ##### 如果你的系统符合标准，就可以继续在第二个终端中，运行下面的命令。清理缓存后，向磁盘分区 /dev/sdb1 写入 2GB 的随机数据：
 
 	# 首先清理缓存
-	$ echo 3 > /proc/sys/vm/drop_caches
+	[root@localhost ~]# echo 3 > /proc/sys/vm/drop_caches
 	# 然后运行 dd 命令向磁盘分区 /dev/sdb1 写入 2G 数据
-	$ dd if=/dev/urandom of=/dev/sdb1 bs=1M count=2048
+	[root@localhost ~]# dd if=/dev/urandom of=/dev/sdb1 bs=1M count=2048
 
 ##### 然后，再回到终端一，观察内存和 I/O 的变化情况：
 
@@ -180,9 +180,9 @@
 ##### 我们回到第二个终端，运行下面的命令。清理缓存后，从文件 /tmp/file 中，读取数据写入空设备：
 
 	# 首先清理缓存
-	$ echo 3 > /proc/sys/vm/drop_caches
+	[root@localhost ~]# echo 3 > /proc/sys/vm/drop_caches
 	# 运行 dd 命令读取文件数据
-	$ dd if=/tmp/file of=/dev/null
+	[root@localhost ~]# dd if=/tmp/file of=/dev/null
 
 ##### 然后，再回到终端一，观察内存和 I/O 的变化情况：
 
@@ -200,9 +200,9 @@
 ##### 首先，回到第二个终端，运行下面的命令。清理缓存后，从磁盘分区 /dev/sda1 中读取数据，写入空设备：
 
 	# 首先清理缓存
-	$ echo 3 > /proc/sys/vm/drop_caches
+	[root@localhost ~]# echo 3 > /proc/sys/vm/drop_caches
 	# 运行 dd 命令读取文件
-	$ dd if=/dev/sda1 of=/dev/null bs=1M count=1024
+	[root@localhost ~]# dd if=/dev/sda1 of=/dev/null bs=1M count=1024
 
 ##### 然后，再回到终端一，观察内存和 I/O 的变化情况：
 
