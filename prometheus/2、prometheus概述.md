@@ -19,7 +19,7 @@
 
 ##### 架构图
 
-![image](https://github.com/hdpingshao/ops/tree/master/prometheus/images/prometheus2-1.jpg
+![image](https://github.com/hdpingshao/ops/tree/master/prometheus/images/prometheus2-1.jpg)
 
 ##### 组成
 
