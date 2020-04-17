@@ -1,22 +1,22 @@
-#### 配置任意一台服务器当控制器来允许远程连入我们的k8s集群，允许通过apiserver操控整个集群（本例中以我平时常用的服务器为例：192.168.200.121）
+#### 配置任意一台服务器当控制器来允许远程连入我们的k8s集群，允许通过apiserver操控整个集群（本例中以我平时常用的服务器为例：192.168.200.111）
 #### 这样的话我们就无需登陆到k8s集群的服务器上去操作集群，而是可以通过远程操作的方式操作
 
 ##### 1、拷贝可执行文件以及相关的证书文件到该服务器中
 
-	[root@localhost ~]# scp /opt/kubernetes/ssl/ca*pem root@192.168.200.121:/opt/kubernetes/ssl/
-	root@192.168.200.121's password: 
+	[root@localhost ~]# scp /opt/kubernetes/ssl/ca*pem root@192.168.200.111:/opt/kubernetes/ssl/
+	root@192.168.200.111's password: 
 	ca-key.pem                                                                                                                                                         100% 1675     3.3MB/s   00:00    
 	ca.pem                                                                                                                                                             100% 1354     3.1MB/s   00:00    
-	[root@localhost ~]# scp /opt/local/k8s/pki/apiserver/admin*pem root@192.168.200.121:/opt/kubernetes/ssl/
-	root@192.168.200.121's password: 
+	[root@localhost ~]# scp /opt/local/k8s/pki/apiserver/admin*pem root@192.168.200.111:/opt/kubernetes/ssl/
+	root@192.168.200.111's password: 
 	admin-key.pem                                                                                                                                                      100% 1675    59.2KB/s   00:00    
 	admin.pem                                                                                                                                                          100% 1395   191.6KB/s   00:00    
-	[root@localhost ~]# scp /opt/kubernetes/bin/kubectl root@192.168.200.121:/usr/local/bin
-	root@192.168.200.121's password: 
+	[root@localhost ~]# scp /opt/kubernetes/bin/kubectl root@192.168.200.111:/usr/local/bin
+	root@192.168.200.111's password: 
 	kubectl                                                                                                                                                            100%   55MB  56.1MB/s   00:00    
 	[root@localhost ~]# 
 
-##### 2、手动生成kubectl执行需要的配置文件（在192.168.200.121上执行操作）
+##### 2、手动生成kubectl执行需要的配置文件（在192.168.200.111上执行操作）
 
 	[root@localhost ~]# cd /opt/kubernetes/ssl/
 	[root@localhost ssl]# kubectl config set-cluster kubernetes --server=https://192.168.200.142:6443 --certificate-authority=ca.pem 
@@ -49,7 +49,7 @@
 		client-key: /opt/kubernetes/ssl/admin-key.pem
 	[root@localhost ssl]# 
 
-##### 3、在192.168.200.121这台远程服务器上测试kubectl的使用情况
+##### 3、在192.168.200.111这台远程服务器上测试kubectl的使用情况
 
 	[root@localhost ssl]# kubectl get nodes
 	NAME              STATUS   ROLES    AGE   VERSION
